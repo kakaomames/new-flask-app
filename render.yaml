@@ -2,6 +2,7 @@ services:
   - type: web
     name: apk-analyzer
     env: python
+    pythonVersion: 3.11.9 # ここでPythonバージョンを指定
     region: oregon
     plan: free
     # Graphviz および lxmlなどが依存するライブラリをインストール
