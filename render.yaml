@@ -1,8 +1,9 @@
 services:
   - type: web
-    name: new
+    name: web
     env: python
-    region: Oregon
+    region: oregon
     plan: free
-    buildCommand: "pip install -r requirements.txt"
+    # Graphvizをインストールするためのコマンドを追加
+    buildCommand: "apt-get update -qq && apt-get install -y graphviz && pip install -r requirements.txt"
     startCommand: "gunicorn --bind 0.0.0.0:$PORT app:app"
