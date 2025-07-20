@@ -7,7 +7,7 @@ from flask import Flask, request, render_template, redirect, url_for, jsonify
 from werkzeug.utils import secure_filename
 
 # androguardのインポート
-from androguard.core.axml.apk import APK
+from androguard.misc import APK # または ANDROID_VERSIONS, etc.
 from androguard.core.bytecodes.dvm import DalvikVMFormat
 from androguard.core.analysis.analysis import Analysis
 
