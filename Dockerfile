@@ -9,14 +9,18 @@ WORKDIR /app
 # libxml2-dev, libxslt1-devはlxmlのビルドに必要
 # zlib1g-devはその他圧縮ライブラリに必要
 # build-essentialはコンパイルに必要なツール群
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
+# ↓ ここに新しいライブラリを追加します ↓
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
     graphviz \
     libxml2-dev \
     libxslt1-dev \
     zlib1g-dev \
     build-essential \
-    && rm -rf /var/lib/apt/lists/*
+    libusb-1.0-0-dev \
+    libglib2.0-dev \
+    libjson-glib-dev && \
+    rm -rf /var/lib/apt/lists/*
 
 # requirements.txtをコピーしてPython依存関係をインストール
 COPY requirements.txt .
