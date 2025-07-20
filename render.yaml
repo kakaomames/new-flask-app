@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: web
+    name: apk-analyzer
     env: python
     region: oregon
     plan: free
-    # Graphvizをインストールするためのコマンドを追加
-    buildCommand: "apt-get update -qq && apt-get install -y graphviz && pip install -r requirements.txt"
+    # Graphviz および lxmlなどが依存するライブラリをインストール
+    buildCommand: "apt-get update -qq && apt-get install -y graphviz libxml2-dev libxslt1-dev zlib1g-dev && pip install -r requirements.txt"
     startCommand: "gunicorn --bind 0.0.0.0:$PORT app:app"
